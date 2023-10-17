@@ -12,7 +12,6 @@ public class Lista_Circular <T> {
                 this.siguiente = null;
             }
         }
-    
     public void agregar(T dato) {
             Nodo<T> nuevoNodo = new Nodo<>(dato);
             if (actual == null) {
@@ -29,7 +28,7 @@ public class Lista_Circular <T> {
         return actual != null ? actual.dato : null;
     }
     
-    public void avanzar() {
+    public void siguiente() {
         if (actual != null) {
             actual = actual.siguiente;
         }

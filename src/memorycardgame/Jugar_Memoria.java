@@ -4,21 +4,38 @@ import java.util.Scanner;
 
 public class Jugar_Memoria {
     
-    public static class Jugador  //Esta clase es unicamente para llevar el puntaje. Literalmente es mas facil usar dos variables x,y para almacenar el puntaje. No se si exista una manera optima de hacerlo.
-        {
-            public int score;
-            
-            public void Jugador(String name)
-            {
-                this.score = 0;
+    public static class Jugador {
+        private int puntaje;
+        private boolean enTurno;
+
+            public Jugador() {
+                this.puntaje = 0;
+                this.enTurno = false;
             }
-        }
-    
+            public int getPuntaje() {
+                return puntaje;
+            }
+            public void setPuntaje(int puntaje) {
+                this.puntaje = puntaje;
+            }
+            public boolean isEnTurno() {
+                return enTurno;
+            }
+            public void setEnTurno(boolean enTurno) {
+                this.enTurno = enTurno;
+            }
+            public void aumentarPuntaje(int cantidad) {
+                puntaje += cantidad;
+            }
+            public void cambiarTurno() {
+                enTurno = !enTurno;
+            }
+}
     public static class Partida //En esta clase esta practicamente todo el codigo.
     {
         Scanner read = new Scanner (System.in);
         Jugador P1 = new Jugador();
-        Jugador P2 = new Jugador();        
+        Jugador P2 = new Jugador();
         
         public static int[][]conjunto = //Tenemos que ver como reflejamos esto en la interfaz.
             {
@@ -27,11 +44,11 @@ public class Jugar_Memoria {
                 {2,2,1,1},
                 {1,1,2,2}
             };
-        
-        public static String Pturn = "P1"; // Pturn y turnos se inician de un modo que, el jugador 1 siempre empiece la partida.
-        public static int turnos = 0;
-        public static int i,j,k,l,holick1,holick2; // i y j son las coordenadas del primer elemento del arreglo, k y l son las del segundo. Se usan 4 variables para posteriormente saber cuales elementos se haran cero.
-        public static boolean isYourTurn = false; //Se inicia en False para correcto funcionamiento de los condicionales.
+          
+        public String Pturn = "P1"; // Pturn y turnos se inician de un modo que, el jugador 1 siempre empiece la partida. *esto se tiene que ir*
+        public int turnos = 0; //*esto se tiene que ir*
+        public int i,j,k,l,holick1,holick2; // i y j son las coordenadas del primer elemento del arreglo, k y l son las del segundo. Se usan 4 variables para posteriormente saber cuales elementos se haran cero.
+        public boolean isYourTurn = false; //Se inicia en False para correcto funcionamiento de los condicionales *esto se tiene que ir*
         
         public void mostrarMatriz()
         {
@@ -45,7 +62,7 @@ public class Jugar_Memoria {
         
         public void realizarJugada() //Metodo para leer la jugada del jugador en curso
         {
-            System.out.println("Escoge 1 elemento "+Pturn);
+            System.out.println("Escoge 1 elemento "+ Pturn);  
             i = read.nextInt();
             j = read.nextInt();
             holick1 = conjunto [i][j]; //Obtencion del primer elemento.
@@ -78,10 +95,10 @@ public class Jugar_Memoria {
             if (turnos%2==0)
             {
                 Pturn = "P1";
-                if (isYourTurn == true)
+                if (isYourTurn == true) 
                 {
-                    ++P1.score;
-                    System.out.println("Acertaste P1. Tu puntaje es: "+ P1.score +". Juega otra vez");
+                    ++P1.puntaje; 
+                    System.out.println("Acertaste P1. Tu puntaje es: "+ P1.puntaje +". Juega otra vez");
                     jugar();
                 }else
                 {
@@ -93,8 +110,8 @@ public class Jugar_Memoria {
                 Pturn = "P2";
                 if (isYourTurn == true)
                 {
-                    ++P2.score;
-                    System.out.println("Acertaste P2. Tu puntaje es: "+ P2.score  +". Juega otra vez");
+                    ++P2.puntaje;
+                    System.out.println("Acertaste P2. Tu puntaje es: "+ P2.puntaje  +". Juega otra vez");
                     jugar();
                 }else
                 {
@@ -103,7 +120,6 @@ public class Jugar_Memoria {
                 }
             }
         }
-        
         
         public void jugar() //Metodo de la Clase Partida que recopila todos los metodos anteriores de forma ordenada.
         {
@@ -114,6 +130,6 @@ public class Jugar_Memoria {
             verificarJugada();
             
             verificarTurno();
-        }   
+        }
     }
 }
