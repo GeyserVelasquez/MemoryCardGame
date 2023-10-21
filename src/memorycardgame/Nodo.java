@@ -1,7 +1,6 @@
 package memorycardgame;
 
 public class Nodo{  
-   
     private int valor;
     private Nodo siguiente;
     

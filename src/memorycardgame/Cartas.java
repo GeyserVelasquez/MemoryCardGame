@@ -1,8 +1,8 @@
 package memorycardgame;
 
-public class Cartas {
+public class Cartas { 
     private int Valor;
-    private boolean Volteada;
+    private boolean Volteada; 
     private Cartas siguiente; 
         
         public Cartas(int Valor){
@@ -12,10 +12,8 @@ public class Cartas {
         }
         public int getValor() {
             return Valor;
-        } 
+        }
         public void setValor(int Valor) {
             this.Valor = Valor;
         }
-        
-   
 }
