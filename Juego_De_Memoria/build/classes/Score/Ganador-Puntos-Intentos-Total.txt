@@ -1,0 +1,8 @@
+     Ganador       Puntos  Intentos  Total
+         Red           25         6     19
+         Blue          25         4     21
+Red           25         9     16
+Red           35         7     28
+Red           30         6     24
+Red           25         5     20
+Red           25         7     18
